@@ -8,6 +8,21 @@ public class ChessBoard{
 		setupPieces();
 	}
 	
+	public Piece getPiece(int row, int column) {
+		return board[row][column];
+	}
+	
+	public void setPiece(int row, int column, Piece piece) {
+		board[row][column]=piece;
+		if(piece!=null) {
+			piece.setPosition(new Position(row, column));
+		}
+	}
+	
+	public Piece[][] getBoard(){
+		return board;
+	}
+	
 	private void setupPieces() {
 		//place rooks
 		board[0][0]=new rook(PieceColor.BLACK, new Position(0,0));
@@ -41,4 +56,19 @@ public class ChessBoard{
 			board[7][i]=new pawn(PieceColor.WHITE, new Position(7,i));
 		}
 	}
+	public void movePiece(Position start, Position end) {
+		//check if the piece is in the start position and the move is vaild
+		if(board[start.getRow()][start.getColumn()]!=null && board[start.getRow()][start.getColumn()].isVaildMove()) {
+			
+			//move the piece to the end position
+			board[end.getRow()][end.getColumn()]=board[start.getRow()][start.getColumn()];
+			
+			//update the position
+			board[end.getRow()][end.getColumn()].setPosition(end);
+			
+			//clear the start position
+			board[start.getRow()][start.getColumn()]=null;
+		}
+	}
+
 }

@@ -24,21 +24,6 @@ public abstract class Piece {
 	public void setPosition(Position piecePosition) {
 		this.piecePosition = piecePosition;
 	}
-	
-	public void movePiece(Position start, Position end) {
-		//check if the piece is in the start position and the move is vaild
-		if(board[start.getRow()][start.getColumn()]!=null && board[start.getRow()][start.getColumn()].isVaildMove()) {
-			
-			//move the piece to the end position
-			board[end.getRow()][end.getColumn()]=board[start.getRow()][start.getColumn()];
-			
-			//update the position
-			board[end.getRow()][end.getColumn()].setPosition(end);
-			
-			//clear the start position
-			board[start.getRow()][start.getColumn()]=null;
-		}
-	}
-	
+		
 	public abstract boolean isValidMove(Position newPosition,Piece[][]board);
 }

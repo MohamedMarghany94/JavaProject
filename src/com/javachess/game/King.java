@@ -25,6 +25,7 @@ public class King extends Piece{
 			if(board[newPosition.getRow()][newPosition.getColumn()].getColor()==this.getColor()) {
 				return false;
 			}
-		}s
+		}
 		return true;
+	}
 }
